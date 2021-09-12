@@ -1,8 +1,8 @@
-#!/usr/bin/python3
-
 import sys
 from datetime import datetime
 from dcapy.all import *
+
+#Tratamento de exceção
 
 try:
     interface = input("\nSet interface: ")
@@ -18,6 +18,8 @@ conf.verb = 0
 
 ans, unans = srp(Ether(dst="ff:ff:ff:ff:ff:ff")/ARP(pdst = ips), timeout=2, iface=interface, inter=0.1)
 printf("\n\MAC\t\tIP\n")
+
+#Realizando o Scan
 
 for snd, rcv in ans:
     print(rcv.sprintf(%Ether.src% - %ARP.psrc%))
